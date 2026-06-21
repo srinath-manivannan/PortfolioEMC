@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Professional MERN Stack Developer Portfolio showcasing MongoDB, Express.js, React.js, Node.js, REST API, JavaScript, Git, N8N Automation and AI Integration projects.">
+<meta name="keywords" content="MongoDB, Express.js, React.js, Node.js, REST API, JavaScript, Git, MERN Stack Developer">
+<meta name="author" content="Your Name">
+<title>MERN Stack Developer Portfolio</title>
+
+<style>
+:root{
+    --accent:#2563eb;
+    --accent-light:#eff6ff;
+    --text:#1e293b;
+    --text-light:#475569;
+    --muted:#64748b;
+    --border:#e2e8f0;
+    --bg:#ffffff;
+    --section:#f8fafc;
+    --section-alt:#f1f5f9;
+    --radius:12px;
+    --shadow:0 4px 6px rgba(0,0,0,.07);
+    --shadow-lg:0 10px 15px rgba(0,0,0,.1);
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.6;
+}
+
+.container{
+    width:min(1080px,92%);
+    margin:auto;
+}
+
+section{
+    padding:72px 0;
+    border-bottom:1px solid var(--border);
+}
+
+section:last-of-type{
+    border-bottom:none;
+}
+
+h1,h2,h3,h4{
+    line-height:1.3;
+    color:var(--text);
+}
+
+h1{
+    font-size:clamp(2rem,5vw,3.5rem);
+    font-weight:800;
+    margin-bottom:12px;
+}
+
+h2{
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:32px;
+}
+
+h3{
+    font-size:1.2rem;
+    font-weight:700;
+    margin-bottom:8px;
+}
+
+p{
+    color:var(--text-light);
+    line-height:1.7;
+    margin-bottom:12px;
+}
+
+a{
+    text-decoration:none;
+    color:var(--accent);
+}
+
+button{
+    cursor:pointer;
+}
+
+:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:4px;
+    border-radius:6px;
+}
+
+/* NAVBAR */
+.navbar{
+    position:sticky;
+    top:0;
+    z-index:999;
+    background:rgba(255,255,255,0.95);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+}
+
+.nav-inner{
+    height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-weight:700;
+    font-size:1rem;
+    letter-spacing:-0.5px;
+}
+
+.nav-links{
+    display:flex;
+    gap:32px;
+    align-items:center;
+}
+
+.nav-links a{
+    color:var(--text);
+    font-weight:500;
+    font-size:0.95rem;
+    transition:color 200ms ease;
+}
+
+.nav-links a:hover{
+    color:var(--accent);
+}
+
+.resume-btn{
+    padding:10px 18px;
+    background:var(--accent);
+    color:white;
+    border-radius:8px;
+    font-weight:600;
+    border:none;
+    transition:background 200ms ease;
+}
+
+.resume-btn:hover{
+    background:#1d4ed8;
+}
+
+.mobile-btn{
+    display:none;
+    border:none;
+    background:none;
+    font-size:1.5rem;
+    cursor:pointer;
+}
+
+/* HERO */
+.hero{
+    padding-top:60px;
+}
+
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    background:#ecfdf5;
+    color:#047857;
+    border:1px solid #d1fae5;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:0.9rem;
+    font-weight:500;
+    margin-bottom:24px;
+}
+
+.dot{
+    width:8px;
+    height:8px;
+    background:#10b981;
+    border-radius:50%;
+    animation:pulse 2s infinite;
+}
+
+@keyframes pulse{
+    0%, 100% { opacity:1; }
+    50% { opacity:0.5; }
+}
+
+.hero-role{
+    color:var(--accent);
+    font-size:1.1rem;
+    font-weight:700;
+    margin-bottom:16px;
+    letter-spacing:-0.5px;
+}
+
+.hero p{
+    max-width:700px;
+    font-size:1.05rem;
+    line-height:1.8;
+    margin-bottom:16px;
+}
+
+.hero-actions{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-top:32px;
+}
+
+.btn{
+    padding:12px 24px;
+    border-radius:8px;
+    font-weight:600;
+    font-size:0.95rem;
+    border:none;
+    transition:all 200ms ease;
+    cursor:pointer;
+}
+
+.btn-primary{
+    background:var(--accent);
+    color:white;
+}
+
+.btn-primary:hover{
+    background:#1d4ed8;
+    transform:translateY(-1px);
+    box-shadow:var(--shadow-lg);
+}
+
+.btn-secondary{
+    border:1.5px solid var(--border);
+    color:var(--text);
+    background:transparent;
+}
+
+.btn-secondary:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+    background:var(--accent-light);
+}
+
+.tech-chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:32px;
+}
+
+.chip{
+    background:var(--accent-light);
+    color:var(--accent);
+    padding:8px 14px;
+    border-radius:8px;
+    font-size:0.85rem;
+    font-weight:600;
+    border:1px solid transparent;
+    transition:all 200ms ease;
+}
+
+.chip:hover{
+    border-color:var(--accent);
+}
+
+/* CARDS & GRID */
+.grid{
+    display:grid;
+    gap:24px;
+}
+
+.facts{
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    margin-top:24px;
+}
+
+.fact{
+    background:var(--section);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:24px;
+    text-align:center;
+    transition:all 200ms ease;
+}
+
+.fact:hover{
+    border-color:var(--accent);
+    box-shadow:var(--shadow);
+}
+
+.skills-grid{
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+
+.skill-card{
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px;
+    background:var(--section);
+    transition:all 200ms ease;
+}
+
+.skill-card:hover{
+    border-color:var(--accent);
+    box-shadow:var(--shadow);
+    background:var(--bg);
+}
+
+.skill-card h3{
+    margin-bottom:18px;
+    color:var(--accent);
+}
+
+.skill-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.skill{
+    background:var(--bg);
+    border:1px solid var(--border);
+    padding:7px 12px;
+    border-radius:6px;
+    font-size:0.85rem;
+    font-weight:500;
+    color:var(--text-light);
+    transition:all 150ms ease;
+    cursor:default;
+}
+
+.skill:hover{
+    border-color:var(--accent);
+    color:var(--accent);
+}
+
+.projects{
+    grid-template-columns:repeat(auto-fit,minmax(340px,1fr));
+}
+
+.project{
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:28px;
+    display:flex;
+    flex-direction:column;
+    background:var(--bg);
+    transition:all 200ms ease;
+}
+
+.project:hover{
+    border-color:var(--accent);
+    box-shadow:var(--shadow-lg);
+    transform:translateY(-2px);
+}
+
+.project h3{
+    margin-bottom:12px;
+    color:var(--accent);
+}
+
+.project p{
+    font-size:0.95rem;
+    margin-bottom:10px;
+}
+
+.project p strong{
+    color:var(--text);
+    font-weight:600;
+}
+
+.project-tech{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin:18px 0;
+}
+
+.tag{
+    background:var(--accent-light);
+    color:var(--accent);
+    padding:6px 10px;
+    border-radius:6px;
+    font-size:0.8rem;
+    font-weight:600;
+    border:1px solid transparent;
+}
+
+.tag:hover{
+    border-color:var(--accent);
+}
+
+.project-links{
+    display:flex;
+    gap:16px;
+    margin-top:auto;
+    padding-top:18px;
+}
+
+.project-links a{
+    color:var(--accent);
+    font-weight:600;
+    font-size:0.95rem;
+    transition:color 150ms ease;
+}
+
+.project-links a:hover{
+    color:#1d4ed8;
+}
+
+/* TIMELINE */
+.timeline{
+    border-left:2px solid var(--accent);
+    padding-left:28px;
+}
+
+.timeline-item{
+    margin-bottom:48px;
+    position:relative;
+}
+
+.timeline-item::before{
+    content:"";
+    position:absolute;
+    left:-35px;
+    top:5px;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    background:var(--accent);
+    border:3px solid var(--bg);
+}
+
+.timeline-item h3{
+    margin-bottom:4px;
+    color:var(--accent);
+}
+
+.meta{
+    color:var(--muted);
+    font-size:0.9rem;
+    font-weight:500;
+    margin-bottom:8px;
+}
+
+.timeline-item ul{
+    padding-left:20px;
+}
+
+.timeline-item li{
+    margin-bottom:6px;
+    color:var(--text-light);
+    line-height:1.7;
+}
+
+.contact-card{
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:32px;
+    background:var(--section);
+}
+
+.contact-list{
+    display:grid;
+    gap:16px;
+}
+
+.contact-list div{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:0.95rem;
+}
+
+.contact-list a{
+    color:var(--accent);
+    font-weight:600;
+    transition:color 150ms ease;
+}
+
+.contact-list a:hover{
+    color:#1d4ed8;
+}
+
+footer{
+    border-top:1px solid var(--border);
+    padding:40px 0;
+    text-align:center;
+    color:var(--muted);
+    font-size:0.9rem;
+}
+
+a:hover,
+.btn:hover{
+    opacity:1;
+}
+
+@media (max-width:768px){
+    .mobile-btn{
+        display:block;
+    }
+
+    .nav-links{
+        display:none;
+        position:absolute;
+        top:68px;
+        left:0;
+        width:100%;
+        background:var(--bg);
+        border-bottom:1px solid var(--border);
+        flex-direction:column;
+        padding:16px 20px;
+        gap:0;
+    }
+
+    .nav-links a{
+        padding:12px 0;
+    }
+
+    .nav-links.show{
+        display:flex;
+    }
+
+    .hero-actions{
+        flex-direction:column;
+    }
+
+    .btn{
+        text-align:center;
+        width:100%;
+    }
+
+    h2{
+        font-size:1.65rem;
+        margin-bottom:24px;
+    }
+
+    section{
+        padding:56px 0;
+    }
+
+    .skills-grid,
+    .projects{
+        grid-template-columns:1fr;
+    }
+
+    .tech-chips{
+        margin-top:24px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce){
+    *{
+        scroll-behavior:auto !important;
+        animation:none !important;
+        transition:none !important;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<nav class="navbar">
+<div class="container nav-inner">
+<div class="logo" id="navName"></div>
+
+<button class="mobile-btn" id="menuBtn">☰</button>
+
+<div class="nav-links" id="navLinks">
+<a href="#about">About</a>
+<a href="#skills">Skills</a>
+<a href="#projects">Projects</a>
+<a href="#timeline">Experience</a>
+<a href="#contact">Contact</a>
+<a href="#" class="resume-btn">Resume</a>
+</div>
+</div>
+</nav>
+
+<header class="hero container">
+<div class="status">
+<span class="dot"></span>
+Available for Work
+</div>
+
+<h1 id="heroName"></h1>
+<div class="hero-role" id="heroRole"></div>
+<p id="heroSummary"></p>
+
+<div class="hero-actions">
+<a href="#projects" class="btn btn-primary">View Projects</a>
+<a href="#contact" class="btn btn-secondary">Contact Me</a>
+</div>
+
+<div class="tech-chips" id="heroChips"></div>
+</header>
+
+<section id="about">
+<div class="container">
+<h2>About</h2>
+<p id="aboutText"></p>
+
+<div class="grid facts" id="facts"></div>
+</div>
+</section>
+
+<section id="skills">
+<div class="container">
+<h2>Skills</h2>
+<div class="grid skills-grid" id="skillsGrid"></div>
+</div>
+</section>
+
+<section id="projects">
+<div class="container">
+<h2>Projects</h2>
+<div class="grid projects" id="projectsGrid"></div>
+</div>
+</section>
+
+<section id="experience">
+<div class="container">
+<h2>Professional Experience</h2>
+<div class="timeline" id="timelineContainer"></div>
+</div>
+</section>
+
+<section id="education" style="background: var(--section);">
+<div class="container">
+<h2>Education & Certifications</h2>
+<div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-top: 24px;">
+<article style="background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;">
+<h3 style="color: var(--accent); margin-bottom: 8px;">Education</h3>
+<div id="educationContainer"></div>
+</article>
+<article style="background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;">
+<h3 style="color: var(--accent); margin-bottom: 8px;">Certifications</h3>
+<div id="certificationsContainer"></div>
+</article>
+<article style="background: var(--bg); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px;">
+<h3 style="color: var(--accent); margin-bottom: 8px;">Achievements</h3>
+<div id="achievementsContainer"></div>
+</article>
+</div>
+</div>
+</section>
+
+<section id="contact">
+<div class="container">
+<h2>Contact</h2>
+<div class="contact-card">
+<div class="contact-list" id="contactList"></div>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p id="footerText"></p>
+</div>
+</footer>
+
+<script>
+const DATA = {
+    personal: {
+        name: "Srinath Manivannan",
+        role: "AI Full Stack Developer",
+        headline: "MERN Stack Developer | React.js | Next.js | Node.js | MongoDB | N8N Automation | AI Integration",
+        email: "srinathmpro2001@gmail.com",
+        phone: "+91 8144429317",
+        location: "Tamil Nadu, India",
+        available: true,
+        portfolio: "https://srinath-portfolio-jet.vercel.app",
+        github: "https://github.com/srinathdev",
+        linkedin: "https://linkedin.com/in/srinath-manivannan",
+        resume: "resume.pdf"
+    },
+
+    hero: {
+        pitch: "Delivering scalable MERN applications and AI-enabled automation that reduce cost and improve reliability.",
+        summary: "AI Full Stack Developer with practical experience building high-performance MERN and Next.js applications and AI-enabled workflows.",
+        highlights: [
+            "85% System Load Reduction",
+            "500+ Weekly Tasks Automated",
+            "50+ Active Users Supported",
+            "99.8% Platform Uptime"
+        ]
+    },
+
+    about: {
+        intro: "Recognized at Vanan Services for an 85% system load reduction and for automating 500+ weekly tasks using N8N.",
+        description: "Skilled in React.js, Next.js, Node.js, MongoDB, REST API design, and AI/LLM integrations. Focused on building reliable, maintainable systems that solve real business problems and improve operational efficiency.",
+        quickFacts: [
+            { label: "Experience", value: "3+ Years" },
+            { label: "Role", value: "AI Full Stack Developer" },
+            { label: "Expertise", value: "MERN & Next.js" },
+            { label: "Location", value: "Tamil Nadu, India" }
+        ]
+    },
+
+    skills: {
+        Frontend: [
+            "React.js",
+            "Next.js",
+            "JavaScript",
+            "TypeScript",
+            "HTML5",
+            "CSS3",
+            "Redux",
+            "Tailwind CSS"
+        ],
+
+        Backend: [
+            "Node.js",
+            "Express.js",
+            "NestJS",
+            "REST API",
+            "JWT Authentication",
+            "MVC Architecture"
+        ],
+
+        Database: [
+            "MongoDB",
+            "Mongoose",
+            "PostgreSQL"
+        ],
+
+        "Tools & DevOps": [
+            "Git",
+            "GitHub",
+            "Docker",
+            "Postman",
+            "VS Code",
+            "AWS S3",
+            "Cloudflare R2",
+            "CI/CD",
+            "Jira"
+        ],
+
+        "AI & Automation": [
+            "N8N Automation",
+            "OpenAI API",
+            "RAG / LLM Integration",
+            "Google Apps Script",
+            "AI Workflow Automation"
+        ]
+    },
+
+    projects: [
+        {
+            title: "Work Tracker",
+            description: "AI-powered productivity and team-management platform with tracking, reporting, and automation.",
+            impact: "Achieved an 85% CPU usage reduction and improved data accuracy by 35%.",
+            tech: ["React.js", "Node.js", "MongoDB", "REST API", "N8N"],
+            github: "#",
+            live: "#"
+        },
+        {
+            title: "GeoGPT Platform",
+            description: "AI-enabled geographic intelligence platform with robust frontend architecture and AI integrations.",
+            impact: "Supported 50+ active users with 99.8% uptime and integrated AI-driven workflows.",
+            tech: ["Next.js", "React.js", "Node.js", "MongoDB", "OpenAI API"],
+            github: "#",
+            live: "#"
+        },
+        {
+            title: "SWOOS Sales Tracking System",
+            description: "Business Intelligence dashboard that automated reporting and analytics to speed decision-making.",
+            impact: "Reduced reporting time from 2 hours to 15 minutes and automated insight generation.",
+            tech: ["React.js", "Node.js", "PostgreSQL", "REST API"],
+            github: "#",
+            live: "#"
+        },
+        {
+            title: "Gmail Automation Platform",
+            description: "Implemented automated communication workflows using Google Apps Script and N8N.",
+            impact: "Saved 10+ hours weekly by automating repetitive email tasks and notifications.",
+            tech: ["Google Apps Script", "N8N", "Node.js", "REST API"],
+            github: "#",
+            live: "#"
+        },
+        {
+            title: "ECG Arrhythmia Detection System",
+            description: "Medical AI solution for detecting ECG abnormalities with high accuracy.",
+            impact: "Achieved ~95% prediction accuracy in a healthcare-focused deployment.",
+            tech: ["Machine Learning", "Python", "AI", "Healthcare"],
+            github: "#",
+            live: "#"
+        }
+    ],
+
+    experience: [
+        {
+            role: "Web App Developer - AI",
+            company: "Vanan Services",
+            period: "Jun 2025 - Present",
+            location: "Remote",
+            points: [
+                "Built Work Tracker, Veekidz, and SEO Dashboard reducing CPU usage by 85%",
+                "Automated 500+ weekly tasks using N8N workflows and Google Apps Script",
+                "Improved data accuracy by 35% through optimization and validation",
+                "Implemented Gmail automation saving 10+ hours weekly"
+            ]
+        },
+        {
+            role: "Front-end Developer",
+            company: "HEPL (CavinKare Group)",
+            period: "Feb 2024 - May 2025",
+            location: "Puducherry",
+            points: [
+                "Delivered CONVEX AGILE and GeoGPT platforms using React.js and Next.js",
+                "Supported 50+ production users with 99.8% platform uptime",
+                "Reduced reporting time from 2 hours to 15 minutes",
+                "Built scalable REST APIs and optimized frontend performance"
+            ]
+        },
+        {
+            role: "Software Engineering Intern",
+            company: "Capgemini",
+            period: "Aug 2023 - Jan 2024",
+            location: "Remote",
+            points: [
+                "Developed e-commerce features using React.js, Node.js, and MongoDB",
+                "Participated in full-stack development lifecycle and deployment",
+                "Delivered production-ready features and components"
+            ]
+        },
+        {
+            role: "Software Engineer",
+            company: "Vijay & Co",
+            period: "Dec 2022 - Jul 2023",
+            location: "Tamil Nadu",
+            points: [
+                "Built ECG arrhythmia system with 95% accuracy for medical diagnosis",
+                "Developed clinic management platform serving 200+ monthly appointments",
+                "Created 6+ custom web applications and improved workflow efficiency by 40%"
+            ]
+        }
+    ],
+
+    education: [
+        {
+            degree: "B.E. Electronics & Communication Engineering",
+            institution: "Mailam Engineering College",
+            period: "2019 - 2023",
+            score: "CGPA 8.7 / 10 (First Class with Distinction)",
+            achievements: [
+                "Outstanding Student Award (2019-2023)",
+                "First Class with Distinction"
+            ]
+        }
+    ],
+
+    certifications: [
+        {
+            name: "Java Full Stack Development",
+            issuer: "Capgemini",
+            year: "2023"
+        },
+        {
+            name: "Data Science Tools",
+            issuer: "IBM",
+            year: "2023"
+        }
+    ],
+
+    achievements: [
+        "CEO Recognition for Excellence - Vanan Services (2025)",
+        "Outstanding Student Award - Mailam Engineering College",
+        "Best Project Award - Medical Devices Featured on SUN TV (1.5L Views)"
+    ]
+};
+
+// Hero & Navigation
+document.getElementById("navName").textContent = DATA.personal.name;
+document.getElementById("heroName").textContent = DATA.personal.name;
+document.getElementById("heroRole").textContent = DATA.personal.role;
+document.getElementById("heroSummary").textContent = DATA.hero.pitch;
+
+// Tech Chips
+document.getElementById("heroChips").innerHTML =
+DATA.hero.highlights.map(h=>`<span class="chip">${h}</span>`).join("");
+
+// About Section
+const aboutHTML = `
+  <p><strong>${DATA.about.intro}</strong></p>
+  <p>${DATA.about.description}</p>
+`;
+document.getElementById("aboutText").innerHTML = aboutHTML;
+
+// Quick Facts
+document.getElementById("facts").innerHTML =
+DATA.about.quickFacts.map(f=>`
+  <div class="fact">
+    <div style="font-size: 0.85rem; color: var(--muted); margin-bottom: 6px;">${f.label}</div>
+    <div style="font-weight: 700; color: var(--accent);">${f.value}</div>
+  </div>
+`).join("");
+
+// Skills Grid
+const skillsGrid=document.getElementById("skillsGrid");
+Object.entries(DATA.skills).forEach(([group,items])=>{
+  skillsGrid.innerHTML+=`
+    <div class="skill-card">
+      <h3>${group}</h3>
+      <div class="skill-list">
+        ${items.map(i=>`<span class="skill">${i}</span>`).join("")}
+      </div>
+    </div>`;
+});
+
+// Projects Grid
+document.getElementById("projectsGrid").innerHTML=
+DATA.projects.map(project=>`
+  <article class="project">
+    <h3>${project.title}</h3>
+    <p><strong>Overview:</strong> ${project.description}</p>
+    <p><strong>Impact:</strong> ${project.impact}</p>
+    
+    <div class="project-tech">
+      ${project.tech.map(t=>`<span class="tag">${t}</span>`).join("")}
+    </div>
+    
+    <div class="project-links">
+      <a href="${project.github}">GitHub</a>
+      <a href="${project.live}">Live Demo</a>
+    </div>
+  </article>
+`).join("");
+
+// Experience Timeline
+document.getElementById("timelineContainer").innerHTML=
+DATA.experience.map(item=>`
+  <div class="timeline-item">
+    <h3>${item.role}</h3>
+    <div class="meta">${item.company} • ${item.period}</div>
+    <div style="font-size: 0.9rem; color: var(--muted); margin-bottom: 12px;">${item.location}</div>
+    <ul>
+      ${item.points.map(p=>`<li>${p}</li>`).join("")}
+    </ul>
+  </div>
+`).join("");
+
+// Education
+document.getElementById("educationContainer").innerHTML=
+DATA.education.map(item=>`
+  <div style="margin-bottom: 20px;">
+    <div style="font-weight: 700; color: var(--text); margin-bottom: 4px;">${item.degree}</div>
+    <div style="color: var(--muted); font-size: 0.9rem; margin-bottom: 4px;">${item.institution}</div>
+    <div style="color: var(--accent); font-weight: 600; margin-bottom: 8px;">${item.period}</div>
+    <div style="color: var(--text-light); font-size: 0.9rem;">${item.score}</div>
+  </div>
+`).join("");
+
+// Certifications
+document.getElementById("certificationsContainer").innerHTML=
+DATA.certifications.map(cert=>`
+  <div style="margin-bottom: 14px; padding-bottom: 14px; border-bottom: 1px solid var(--border);">
+    <div style="font-weight: 600; color: var(--text); margin-bottom: 2px;">${cert.name}</div>
+    <div style="color: var(--muted); font-size: 0.85rem;">${cert.issuer} • ${cert.year}</div>
+  </div>
+`).join("");
+
+// Achievements
+document.getElementById("achievementsContainer").innerHTML=
+DATA.achievements.map(ach=>`
+  <div style="margin-bottom: 12px; display: flex; gap: 10px; align-items: flex-start;">
+    <span style="color: var(--accent); margin-top: 4px;">✓</span>
+    <span style="color: var(--text-light); font-size: 0.9rem;">${ach}</span>
+  </div>
+`).join("");
+
+// Contact
+document.getElementById("contactList").innerHTML=`
+  <div><strong>📧 Email:</strong> <a href="mailto:${DATA.personal.email}">${DATA.personal.email}</a></div>
+  <div><strong>📱 Phone:</strong> ${DATA.personal.phone}</div>
+  <div><strong>🔗 LinkedIn:</strong> <a href="${DATA.personal.linkedin}" target="_blank">Profile</a></div>
+  <div><strong>💻 GitHub:</strong> <a href="${DATA.personal.github}" target="_blank">Profile</a></div>
+  <div><strong>🌐 Portfolio:</strong> <a href="${DATA.personal.portfolio}" target="_blank">Visit</a></div>
+`;
+
+// Footer
+document.getElementById("footerText").textContent =
+`© ${new Date().getFullYear()} ${DATA.personal.name} · AI Full Stack Developer`;
+
+// Mobile Menu
+document.getElementById("menuBtn").addEventListener("click",()=>{
+  document.getElementById("navLinks").classList.toggle("show");
+});
+</script>
+
+</body>
+</html>
